@@ -51,8 +51,8 @@
                 effectiveDPR = (1/Math.max(heightZoom, widthZoom)) * dpr
             }
 
-            const zoom = (document.body.style.zoom.replace(/(\d?\d)%/, ".$1") * 1) || 1;
-            const scale = (document.body.style.scale.replace(/(\d?\d)%/, ".$1") * 1) || 1;
+            const zoom = (document.body.style.zoom?.replace(/(\d?\d)%/, ".$1") * 1) || 1;
+            const scale = (document.body.style.scale?.replace(/(\d?\d)%/, ".$1") * 1) || 1;
             effectiveDPR = effectiveDPR * zoom * scale;
             effectiveDPR = Math.round((effectiveDPR + Number.EPSILON) * 100)/100
 
@@ -60,25 +60,25 @@
             const effectiveDogWidth = Math.ceil(dogWidth * effectiveDPR);
 
             document.getElementById('debug').textContent = `ZoomScale: ${Math.round((viewportScale + Number.EPSILON) * 100)/100}
-DPR: ${dpr}
-EffectiveDPR: ${effectiveDPR}
-Width: ${window.innerWidth}
-OuterWidth: ${window.outerWidth}
-Height: ${window.innerHeight}
-OuterHeight: ${window.outerHeight}
-CssZoom: ${document.body.style.zoom}
-CssScale: ${document.body.style.scale}
-DogWidth: ${dogWidth}
-EffectiveDogWidth: ${effectiveDogWidth}
+window.devicePixelRatio: ${dpr}
+dpr_actual(): ${effectiveDPR}
+window.innerWidth: ${window.innerWidth}
+window.outerWidth: ${window.outerWidth}
+window.innerHeight: ${window.innerHeight}
+window.outerHeight: ${window.outerHeight}
+style.zoom: ${document.body.style.zoom}
+style.scale: ${document.body.style.scale}
+img#dog.width: ${dogWidth}
+dog_actual_pixels(): ${effectiveDogWidth}
 `
         }
 
         function zoomIn() {
-            document.body.style.zoom = ((document.body.style.zoom * 1) || 1) + 0.25;
+            document.body.style.zoom = ((document.body.style.zoom?.replace(/(\d?\d)%/, ".$1") * 1) || 1) + 0.25;
             resizeHandler();
         }
         function zoomOut() {
-            document.body.style.zoom = ((document.body.style.zoom * 1) || 1) - 0.25;
+            document.body.style.zoom = ((document.body.style.zoom?.replace(/(\d?\d)%/, ".$1") * 1) || 1) - 0.25;
             resizeHandler();
         }
         function zoomReset() {
@@ -86,11 +86,11 @@ EffectiveDogWidth: ${effectiveDogWidth}
             resizeHandler();
         }
         function scaleIn() {
-            document.body.style.scale = (parseInt(document.body.style.scale) || 1) + 0.25;
+            document.body.style.scale = ((document.body.style.scale?.replace(/(\d?\d)%/, ".$1") * 1) || 1) + 0.25;
             resizeHandler();
         }
         function scaleOut() {
-            document.body.style.scale = (parseInt(document.body.style.scale) || 1) - 0.25;
+            document.body.style.scale = ((document.body.style.scale?.replace(/(\d?\d)%/, ".$1") * 1) || 1) - 0.25;
             resizeHandler();
         }
         function scaleReset() {
