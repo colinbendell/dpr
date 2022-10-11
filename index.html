@@ -16,23 +16,24 @@
             max-width: 38rem;
             margin: auto;
         }
-        @media only screen and (-webkit-min-device-pixel-ratio: 2.01) {
-            body {
-                background-color: red;
-            }
+        pre, h1 {
+            margin: 0;
         }
-        @media only screen and (-webkit-min-device-pixel-ratio: 3.01) {
-            body {
-                background-color: green;
-            }
-        }
-        @media only screen and (-webkit-min-device-pixel-ratio: 4.01) {
-            body {
-                background-color: blue;
-            }
-        }
-
-
+        /*@media only screen and (-webkit-min-device-pixel-ratio: 2.01) {*/
+        /*    body {*/
+        /*        background-color: red;*/
+        /*    }*/
+        /*}*/
+        /*@media only screen and (-webkit-min-device-pixel-ratio: 3.01) {*/
+        /*    body {*/
+        /*        background-color: green;*/
+        /*    }*/
+        /*}*/
+        /*@media only screen and (-webkit-min-device-pixel-ratio: 4.01) {*/
+        /*    body {*/
+        /*        background-color: blue;*/
+        /*    }*/
+        /*}*/
     </style>
     <script>
         const viewport = window.visualViewport;
@@ -120,8 +121,16 @@ EffectiveDogWidth: ${effectiveDogWidth}
         <button id="scaleIn" onclick="scaleIn()">Scale in</button>
         <button id="scaleOut" onclick="scaleOut()">Scale out</button>
         <button id="scaleReset" onclick="scaleReset()">Reset Scale</button>
-        <div style="border: 1px solid black; width: 1px; height: 1px"></div>
-        <div style="border: 1px solid black; width: 10px; height: 10px"></div>
+        <table style="border: 0;">
+            <tr>
+                <td><pre>1 CSS pixel --></pre></td>
+                <td> <div style="border: 1px solid black; width: 1px; height: 1px;"></div></td>
+            </tr>
+            <tr>
+                <td><pre>10 CSS pixels --></pre></td>
+                <td> <div style="border: 1px solid black; width: 10px; height: 10px;"></div></td>
+            </tr>
+        </table>
         <img src="dog.jpg" srcset="dog.jpg 10x" id="dog">
     </main>
 </body>
